@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Comfort for You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --main-pink: #ff66a6;
+      --main-pink-dark: #ff3385;
+      --bg-gradient: linear-gradient(-45deg, #ffe6f0, #e0f7fa, #fce4ec, #e1f5fe);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+        background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.817),
+      rgba(0, 0, 0, 0.813)
+    ),
+    url("syg.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+      animation: bgAnim 12s ease infinite;
+    }
+
+    @keyframes bgAnim {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(179, 233, 163, 0.495);
+      border-radius: 25px;
+      padding: 30px 20px;
+      max-width: 90%;
+      width: 500px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: floatCard 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatCard {
+      from { transform: translateY(0); }
+      to { transform: translateY(-8px); }
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #d63384;
+      margin-bottom: 20px;
+    }
+
+    #message {
+    display: none; /* <-- hide initially */
+    font-size: 1.1em;
+    color: #000000;
+    min-height: 120px;
+    white-space: pre-wrap;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    max-height: 200px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    }
+
+    #message::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+    }
+
+
+    button {
+      background-color: var(--main-pink);
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      font-size: 1em;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    button:hover {
+      background-color: var(--main-pink-dark);
+    }
+
+    img {
+      border-radius: 20px;
+      margin: 15px 0;
+      max-height: 200px;
+      object-fit: cover;
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -30px; /* start below screen */
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      transform: rotate(45deg);
+      animation: floatUp 6s infinite ease-in;
+      opacity: 0;
+    }
+
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { top: 0; left: -10px; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      button {
+        width: 100%;
+        font-size: 1em;
+      }
+
+      #message {
+        font-size: 1em;
+        max-height: 180px;
+      }
+
+      .container {
+        padding: 25px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hearts">
+<script>
+  for (let i = 0; i < 20; i++) {
+    let heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.animationDuration = `${4 + Math.random() * 4}s`;
+    heart.style.animationDelay = `${Math.random() * 5}s`;
+    heart.style.opacity = 0; // ensure hidden before animation
+    document.querySelector('.hearts').appendChild(heart);
+  }
+</script>
+</div>
+
+<div class="container">
+  <h1>Letter For My Bunga!!💖</h1>
+  <div id="message"></div>
+  <img id="comfort-img" src="https://www.icegif.com/wp-content/uploads/2023/05/icegif-184.gif" alt="Comforting Image" style="display: none;">
+  <br>
+  <button id="showMessageBtn" onclick="typeMessage()">Tekan Sini Sayangg!!</button>
+</div>
+
+<audio id="bg-audio">
+  <source src="bg.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  const messageText = 
+`Haii Bunga Saye💖,
+
+Sayangg!! saya mintak maaf tau for making you feel uncomfortable or doubted. Sumpah, bukan niat saya nak buat awak rasa mcm tu. Saya percaya awakkk, always. I just reacted without thinking properly, and I hate that it made you feel bad, especially when you’re already so tired. So saya mintak maaf sangat-sangat tauuu!!
+
+Since you’re in your super hectic weeks, i know you're struggling, and saya nampak effort awak sampai tak tidur apa semua. Just so you know, saya proud sangat-sangat dengan sayang saya ni. Tapi, please don’t be too hard on yourself, okay? It’s okay to be tired, it’s okay to be overwhelmed, sebab sayang will always have me here if you need a shoulder okay!!.
+
+just remember awak tak sorang-sorang. I’m right here, cheering for you quietly, loving you the same way. You don’t need to explain yourself to me, I just want you to feel safe with me. Semangat Studynyaaaa, you got thisss!!
+
+Take it slow, rest when you can, and be gentle with yourself. I love you so much, and I’m really proud of you. Please forgive your boyfriend please!!! :(...
+
+From,
+Ajiem💖
+Your Cute Boyfriend Ehek`; 
+
+  const audio = document.getElementById("bg-audio");
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function typeMessage() {
+    const messageDiv = document.getElementById("message");
+    const image = document.getElementById("comfort-img");
+    const button = document.getElementById("showMessageBtn");
+
+    messageDiv.textContent = '';
+    messageDiv.style.display = "block";
+    image.style.display = "none";
+    messageDiv.scrollTop = 0;
+    button.remove();
+
+    audio.play().catch(err => {
+      console.log("Autoplay failed:", err);
+    });
+
+    for (let i = 0; i < messageText.length; i++) {
+      messageDiv.textContent += messageText.charAt(i);
+      messageDiv.scrollTop = messageDiv.scrollHeight;
+      await sleep(30);
+    }
+
+    image.style.display = "inline-block";
+  }
+
+  // --- 🔇 Stop music when user leaves, switches tab, or locks screen ---
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      audio.pause();
+      audio.currentTime = 0; // reset to start
+    }
+  });
+
+  // Stop the music if the tab is closed or refreshed
+  window.addEventListener("beforeunload", () => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  // For mobile browsers: stop when page loses focus (e.g., switch app)
+  window.addEventListener("blur", () => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+</script>
+
+</body>
+</html>
